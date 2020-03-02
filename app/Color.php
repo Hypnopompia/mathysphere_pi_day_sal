@@ -29,7 +29,7 @@ class Color
         ],
 
         Color::COLOR_CYAN => [
-            'symbol' => '@',
+            'symbol' => '≈',
             'r' => 6,
             'g' => 227,
             'b' => 230,
@@ -37,7 +37,7 @@ class Color
         ],
 
         Color::COLOR_LIGHT_BLUE_GREY => [
-            'symbol' => 'E',
+            'symbol' => 'e',
             'r' => 162,
             'g' => 181,
             'b' => 198,
@@ -45,7 +45,7 @@ class Color
         ],
 
         Color::COLOR_SLATE_BLUE => [
-            'symbol' => '#',
+            'symbol' => '∞',
             'r' => 69,
             'g' => 92,
             'b' => 113,
@@ -53,7 +53,7 @@ class Color
         ],
 
         Color::COLOR_NAVY => [
-            'symbol' => '$',
+            'symbol' => 'π',
             'r' => 37,
             'g' => 59,
             'b' => 115,

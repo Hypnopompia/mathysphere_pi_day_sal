@@ -3,13 +3,12 @@ namespace App;
 
 use App\Color;
 
-class Part01
+class Part01 extends Part
 {
     public $x = 2;
     public $y = 2;
 
     private $rows;
-    private $data = [];
 
     public function __construct()
     {

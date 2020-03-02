@@ -1,64 +1,24 @@
 <?php
 namespace App;
 
-class Frame
+class Frame extends Part
 {
     public $x = 1;
     public $y = 1;
 
-    private $data = [];
-
     public function getData()
     {
-        // Top
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => $i, 'y' => 0, 'color' => Color::COLOR_NAVY];
-        }
+        $this->line(0, 0, 48, 0, Color::COLOR_NAVY); // Top
+        $this->line(0, 12, 48, 12, Color::COLOR_NAVY); // Middle Top
+        $this->line(0, 24, 48, 24, Color::COLOR_NAVY); // Middle
+        $this->line(0, 36, 48, 36, Color::COLOR_NAVY); // Middle Bottom
+        $this->line(0, 48, 48, 48, Color::COLOR_NAVY); // Bottome
 
-        // Middle Top
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => $i, 'y' => 12, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Middle
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => $i, 'y' => 24, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Middle Bottom
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => $i, 'y' => 36, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Bottom
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => $i, 'y' => 48, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Left
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => 0, 'y' => $i, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Left Center
-        for ($i = 13; $i <= 48; $i++) {
-            $this->data[] = ['x' => 12, 'y' => $i, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Center
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => 24, 'y' => $i, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Right Center
-        for ($i = 0; $i <= 36; $i++) {
-            $this->data[] = ['x' => 36, 'y' => $i, 'color' => Color::COLOR_NAVY];
-        }
-
-        // Right
-        for ($i = 0; $i <= 48; $i++) {
-            $this->data[] = ['x' => 48, 'y' => $i, 'color' => Color::COLOR_NAVY];
-        }
+        $this->line(0, 0, 0, 48, Color::COLOR_NAVY); // Left
+        $this->line(12, 13, 12, 48, Color::COLOR_NAVY); // Left Center
+        $this->line(24, 0, 24, 48, Color::COLOR_NAVY); // Center
+        $this->line(36, 0, 36, 36, Color::COLOR_NAVY); // Right Center
+        $this->line(48, 0, 48, 48, Color::COLOR_NAVY); // Right
 
         return $this->data;
     }

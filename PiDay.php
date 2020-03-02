@@ -8,7 +8,7 @@ class PiDay
     private $includeParts = [
         App\Frame::class,
         App\Part01::class, // March 1, 2020
-        // App\Part02::class, // March 2, 2020
+        App\Part02::class, // March 2, 2020
     ];
 
     private $parts = [];
@@ -103,7 +103,7 @@ class PiDay
         $x2 = (($x + 1) * $this->pixelsPerSquare) - 1;
         $y2 = (($y + 1) * $this->pixelsPerSquare) - 1;
         imagefilledrectangle($this->image, $x1, $y1, $x2, $y2, $this->colors[$color]);
-        imagestring($this->image, 4, $x1 + 3, $y1 - 1, Color::getSymbol($color), $this->colors[Color::getTextColor($color)]);
+        imagettftext($this->image, 12, 0, $x1 + 2, $y1 + 12, $this->colors[Color::getTextColor($color)], './arial.ttf', Color::getSymbol($color));
     }
 
     public function saveImage()
