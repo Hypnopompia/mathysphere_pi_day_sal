@@ -7,7 +7,8 @@ class PiDay
 {
     private $includeParts = [
         App\Frame::class,
-        App\Part01::class,
+        App\Part01::class, // March 1, 2020
+        // App\Part02::class, // March 2, 2020
     ];
 
     private $parts = [];
