@@ -23,8 +23,8 @@ class PiDay
     public function __construct($pixelsPerSquare = 15)
     {
         $this->pixelsPerSquare = $pixelsPerSquare;
-        $this->imageWidth = $this->xSquares * $this->pixelsPerSquare;
-        $this->imageHeight = $this->ySquares * $this->pixelsPerSquare;
+        $this->imageWidth = $this->xSquares * $this->pixelsPerSquare + 1;
+        $this->imageHeight = $this->ySquares * $this->pixelsPerSquare + 1;
     }
 
     public function run()
@@ -65,7 +65,7 @@ class PiDay
 
     public function drawGrid($color)
     {
-        for ($x = 0; $x < $this->xSquares; $x++) {
+        for ($x = 0; $x <= $this->xSquares; $x++) {
             imageline(
                 $this->image,
                 $x * $this->pixelsPerSquare, // x1
@@ -76,7 +76,7 @@ class PiDay
             );
         }
 
-        for ($y = 0; $y < $this->ySquares; $y++) {
+        for ($y = 0; $y <= $this->ySquares; $y++) {
             imageline(
                 $this->image,
                 0, // x1
