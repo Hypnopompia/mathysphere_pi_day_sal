@@ -20,7 +20,7 @@ class Part02 extends Part
 
     }
 
-    public function getData()
+    public function render()
     {
         $this->xPos = 0;
         $this->yPos = 4;
@@ -35,7 +35,7 @@ class Part02 extends Part
         $this->moveAndPlot('S', 1, Color::COLOR_LIGHT_BLUE_GREY); // S 1
         // Tie Off
 
-        return $this->data;
+        return $this;
     }
 
     public function moveAndPlot($directions, $steps, $color)

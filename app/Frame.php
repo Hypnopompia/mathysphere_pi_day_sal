@@ -6,7 +6,7 @@ class Frame extends Part
     public $x = 1;
     public $y = 1;
 
-    public function getData()
+    public function render()
     {
         $this->line(0, 0, 48, 0, Color::COLOR_NAVY); // Top
         $this->line(0, 12, 48, 12, Color::COLOR_NAVY); // Middle Top
@@ -20,6 +20,6 @@ class Frame extends Part
         $this->line(36, 0, 36, 36, Color::COLOR_NAVY); // Right Center
         $this->line(48, 0, 48, 48, Color::COLOR_NAVY); // Right
 
-        return $this->data;
+        return $this;
     }
 }

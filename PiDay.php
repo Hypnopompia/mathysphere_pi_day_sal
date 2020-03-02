@@ -38,7 +38,7 @@ class PiDay
         $this->allocateColors();
 
         foreach ($this->parts as $part) {
-            $this->render($part->x, $part->y, $part->getData());
+            $this->render($part->x, $part->y, $part->render()->getData());
         }
 
         $this->drawGrid(Color::COLOR_BLACK);

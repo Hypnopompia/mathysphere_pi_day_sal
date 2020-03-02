@@ -21,7 +21,7 @@ class Part01 extends Part
         ];
     }
 
-    public function getData()
+    public function render()
     {
         foreach ($this->rows as $y => $row) {
             foreach ($row as $x => $cell) {
@@ -29,13 +29,13 @@ class Part01 extends Part
                 $navyFormula = (1.9 * $cell) + 1;
 
                 if (-3 <= $cyanFormula && $cyanFormula < 2) {
-                    $this->data[] = ['x' => $x, 'y' => $y, 'color' => Color::COLOR_CYAN];
+                    $this->plot($x, $y, Color::COLOR_CYAN);
                 } elseif (20 < $navyFormula && $navyFormula <= 39) {
-                    $this->data[] = ['x' => $x, 'y' => $y, 'color' => Color::COLOR_NAVY];
+                    $this->plot($x, $y, Color::COLOR_NAVY);
                 }
             }
         }
 
-        return $this->data;
+        return $this;
     }
 }

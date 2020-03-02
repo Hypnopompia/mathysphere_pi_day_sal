@@ -5,6 +5,11 @@ class Part
 {
     protected $data = [];
 
+    public function getData()
+    {
+        return $this->data;
+    }
+
     public function plot($x, $y, $color)
     {
         $this->data[] = ['x' => $x, 'y' => $y, 'color' => $color];
