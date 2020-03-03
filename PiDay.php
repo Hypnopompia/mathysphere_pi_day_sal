@@ -9,6 +9,7 @@ class PiDay
         App\Frame::class,
         App\Part01::class, // March 1, 2020
         App\Part02::class, // March 2, 2020
+        App\Part03::class, // March 3, 2020
     ];
 
     private $parts = [];
