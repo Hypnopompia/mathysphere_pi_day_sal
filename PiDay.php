@@ -22,7 +22,7 @@ class PiDay
         '932' => 'e', // Light Blue-Grey
         '930' => '∞', // Slate Blue
         '336' => 'π', // Navy
-        'B5200' => '', // White
+        'B5200' => '%', // White
     ];
 
     private $image;
