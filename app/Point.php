@@ -5,10 +5,16 @@ class Point
 {
     private $position;
 
-    public function __construct($x = null, $y = null)
+    public function __construct()
     {
-        $this->position['x'] = $x;
-        $this->position['y'] = $y;
+        $args = func_get_args();
+
+        if (count($args) == 1) {
+            $this->setCoord($args[0]);
+        } else {
+            $this->position['x'] = $args[0];
+            $this->position['y'] = $args[1];
+        }
     }
 
     public function __set($key, $value)
@@ -53,15 +59,10 @@ class Point
             }
         }
 
+        return $this;
     }
 
-    public static function fromCoord($coordinate)
-    {
-        list($x, $y) = self::getCoordinatesPositions($coordinate);
-        return new Point($x - 1, $y - 1);
-    }
-
-    private static function getCoordinatesPositions($coordinates)
+    public function setCoord($coordinates)
     {
         if (preg_match('/^([a-z]+)(\d+)$/i', $coordinates, $matches)) {
             $level = strlen($matches[1]);
@@ -71,8 +72,12 @@ class Point
                     return $result + (ord($letter) - 64) * pow(26, --$level);
                 }
             );
-            return array_splice($matches, 1);
+            $coord = array_splice($matches, 1);
+
+            $this->position['x'] = $coord[0] - 1;
+            $this->position['y'] = $coord[1] - 1;
         }
-        // (returns NULL when wrong $coordinates)
+
+        return $this;
     }
 }

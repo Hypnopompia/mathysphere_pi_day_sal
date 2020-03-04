@@ -6,14 +6,15 @@ class Range
     private $startPoint;
     private $endPoint;
 
-    public function __construct(Point $startPoint = null, Point $endPoint = null)
+    public function __construct()
     {
-        if ($startPoint) {
-            $this->setStartPoint($startPoint);
-        }
+        $args = func_get_args();
 
-        if ($endPoint) {
-            $this->setEndPoint($endPoint);
+        if (count($args) == 1) {
+            $this->setCoordRange($args[0]);
+        } else {
+            $this->setStartPoint($args[0]);
+            $this->setEndPoint($args[1]);
         }
     }
 
@@ -52,9 +53,16 @@ class Range
         return null;
     }
 
-    public static function fromCoord($coord)
+    public function setCoordRange($coord)
     {
+        if (strpos($coord, ':') === false) {
+            $this->setStartPoint(new Point($coord))->setEndPoint(new Point($coord));
+            return $this;
+        }
+
         $coords = explode(":", $coord);
-        return new Range(Point::fromCoord($coords[0]), Point::fromCoord($coords[1]));
+        $this->setStartPoint(new Point($coords[0]))->setEndPoint(new Point($coords[1]));
+
+        return $this;
     }
 }

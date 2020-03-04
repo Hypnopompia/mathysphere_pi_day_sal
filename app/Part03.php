@@ -6,6 +6,11 @@ use App\Color;
 class Part03 extends Part
 {
     private $rows;
+    private $colors = [
+        0 => Color::COLOR_NAVY,
+        1 => Color::COLOR_LIGHT_BLUE_GREY,
+        2 => Color::COLOR_CYAN,
+    ];
 
     public function __construct()
     {
@@ -29,16 +34,8 @@ class Part03 extends Part
     {
         foreach ($this->rows as $y => $row) {
             foreach ($row as $x => $cell) {
-                switch ($cell) {
-                    case 0:
-                        $this->plot(new Point($x, $y), Color::COLOR_NAVY);
-                        break;
-                    case 1:
-                        $this->plot(new Point($x, $y), Color::COLOR_LIGHT_BLUE_GREY);
-                        break;
-                    case 2:
-                        $this->plot(new Point($x, $y), Color::COLOR_CYAN);
-                        break;
+                if (isset($this->colors[$cell])) {
+                    $this->plot(new Point($x, $y), $this->colors[$cell]);
                 }
             }
         }

@@ -37,6 +37,7 @@ class Part
             return;
         }
         $this->data[$point->x][$point->y] = ['color' => $color];
+        return $this;
     }
 
     // Bresenham's line
@@ -89,6 +90,8 @@ class Part
 
         // Finish by adding the final pixel.
         $this->plot($endPoint, $color, $replace);
+
+        return $this;
     }
 
     public function fill(Range $range, $color, $replace = false)
@@ -98,5 +101,6 @@ class Part
                 $this->plot(new Point($x, $y), $color, $replace);
             }
         }
+        return $this;
     }
 }
