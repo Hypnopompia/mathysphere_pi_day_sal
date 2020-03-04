@@ -4,6 +4,8 @@ namespace App;
 class Part
 {
     protected $offset = null;
+    private $colors = [];
+    private $currentColor;
     protected $data = [];
 
     public function setOffset(Point $offset)
@@ -15,6 +17,27 @@ class Part
     public function getOffset()
     {
         return $this->offset ?? new Point(0, 0);
+    }
+
+    public function useColor($name, $id)
+    {
+        $this->colors[$name] = new Color($id);
+    }
+
+    public function getColors()
+    {
+        return $this->colors;
+    }
+
+    public function setColor($color)
+    {
+        $this->currentColor = $color;
+        return $this;
+    }
+
+    public function getColor()
+    {
+        return $this->currentColor;
     }
 
     public function getData()
@@ -30,24 +53,24 @@ class Part
         return false;
     }
 
-    public function plot(Point $point, $color, $replace = false)
+    public function plot(Point $point, $replace = false)
     {
         if ($this->hasColor($point) && !$replace) {
             return $this;
         }
 
-        $this->data[$point->x][$point->y]['color'] = $color;
+        $this->data[$point->x][$point->y]['color'] = $this->colors[$this->currentColor];
 
         return $this;
     }
 
     // Bresenham's line
     // Adapted from https://www.hashbangcode.com/article/drawling-line-pixels-php
-    public function line(Point $startPoint, Point $endPoint, $color, $replace = false)
+    public function line(Point $startPoint, Point $endPoint, $replace = false)
     {
         if ($startPoint->equals($endPoint)) {
             // Start and finish are the same.
-            $this->plot($startPoint, $color, $replace);
+            $this->plot($startPoint, $replace);
             return;
         }
 
@@ -75,7 +98,7 @@ class Part
             $pitch = $startPoint->y - $slope * $startPoint->x;
 
             while ($startPoint->x != $endPoint->x) {
-                $this->plot(new Point($startPoint->x, round($slope * $startPoint->x + $pitch)), $color, $replace);
+                $this->plot(new Point($startPoint->x, round($slope * $startPoint->x + $pitch)), $replace);
                 $startPoint->x += $sx;
             }
         } else {
@@ -84,22 +107,22 @@ class Part
             $pitch = $startPoint->x - $slope * $startPoint->y;
 
             while ($startPoint->y != $endPoint->y) {
-                $this->plot(new Point(round($slope * $startPoint->y + $pitch), $startPoint->y), $color, $replace);
+                $this->plot(new Point(round($slope * $startPoint->y + $pitch), $startPoint->y), $replace);
                 $startPoint->y += $sy;
             }
         }
 
         // Finish by adding the final pixel.
-        $this->plot($endPoint, $color, $replace);
+        $this->plot($endPoint, $replace);
 
         return $this;
     }
 
-    public function fill(Range $range, $color, $replace = false)
+    public function fill(Range $range, $replace = false)
     {
         for ($x = $range->start->x; $x <= $range->end->x; $x++) {
             for ($y = $range->start->y; $y <= $range->end->y; $y++) {
-                $this->plot(new Point($x, $y), $color, $replace);
+                $this->plot(new Point($x, $y), $replace);
             }
         }
         return $this;
