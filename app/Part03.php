@@ -5,13 +5,11 @@ use App\Color;
 
 class Part03 extends Part
 {
-    public $x = 38;
-    public $y = 2;
-
     private $rows;
 
     public function __construct()
     {
+        $this->setOffset(new Point(38, 2));
         $this->rows = [
             0 => [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
             1 => [4, 4, 1, 1, 1, 4, 4, 4, 4, 4, 4],
@@ -33,13 +31,13 @@ class Part03 extends Part
             foreach ($row as $x => $cell) {
                 switch ($cell) {
                     case 0:
-                        $this->plot($x, $y, Color::COLOR_NAVY);
+                        $this->plot(new Point($x, $y), Color::COLOR_NAVY);
                         break;
                     case 1:
-                        $this->plot($x, $y, Color::COLOR_LIGHT_BLUE_GREY);
+                        $this->plot(new Point($x, $y), Color::COLOR_LIGHT_BLUE_GREY);
                         break;
                     case 2:
-                        $this->plot($x, $y, Color::COLOR_CYAN);
+                        $this->plot(new Point($x, $y), Color::COLOR_CYAN);
                         break;
                 }
             }

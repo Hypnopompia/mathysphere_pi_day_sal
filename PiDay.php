@@ -2,6 +2,7 @@
 require "vendor/autoload.php";
 
 use App\Color;
+use App\Point;
 
 class PiDay
 {
@@ -10,6 +11,7 @@ class PiDay
         App\Part01::class, // March 1, 2020
         App\Part02::class, // March 2, 2020
         App\Part03::class, // March 3, 2020
+        App\Part04::class, // March 4, 2020
     ];
 
     private $parts = [];
@@ -39,7 +41,7 @@ class PiDay
         $this->allocateColors();
 
         foreach ($this->parts as $part) {
-            $this->render($part->x, $part->y, $part->render()->getData());
+            $this->render($part->getOffset(), $part->render()->getData());
         }
 
         $this->drawGrid(Color::COLOR_BLACK);
@@ -90,10 +92,12 @@ class PiDay
         }
     }
 
-    public function render($x, $y, $data)
+    public function render(Point $offset, $data)
     {
-        foreach ($data as $square) {
-            $this->drawSquare($x + $square['x'], $y + $square['y'], $square['color']);
+        foreach ($data as $x => $row) {
+            foreach ($row as $y => $cell) {
+                $this->drawSquare($offset->x + $x, $offset->y + $y, $cell['color']);
+            }
         }
     }
 

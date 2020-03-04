@@ -5,26 +5,21 @@ use App\Color;
 
 class Part02 extends Part
 {
-    public $x = 26;
-    public $y = 2;
-
-    private $xPos;
-    private $yPos;
+    private $position;
 
     public function __construct()
     {
-        $this->line(5, 0, 5, 4, Color::COLOR_NAVY); // Top
-        $this->line(1, 5, 4, 5, Color::COLOR_NAVY); // Left
-        $this->line(6, 5, 9, 5, Color::COLOR_NAVY); // Right
-        $this->line(5, 6, 5, 10, Color::COLOR_NAVY); // Bottom
-
+        $this->setOffset(new Point(26, 2));
+        $this->line(Point::fromCoord("F1"), Point::fromCoord("F5"), Color::COLOR_NAVY); // Top
+        $this->line(Point::fromCoord("B6"), Point::fromCoord("E6"), Color::COLOR_NAVY); // Left
+        $this->line(Point::fromCoord("G6"), Point::fromCoord("J6"), Color::COLOR_NAVY); // Right
+        $this->line(Point::fromCoord("F7"), Point::fromCoord("F11"), Color::COLOR_NAVY); // Bottom
     }
 
     public function render()
     {
-        $this->xPos = 0;
-        $this->yPos = 4;
-        $this->plot($this->xPos, $this->yPos, Color::COLOR_LIGHT_BLUE_GREY); // Start at A5
+        $this->position = Point::fromCoord("A5"); // Start at A5
+        $this->plot($this->position, Color::COLOR_LIGHT_BLUE_GREY);
 
         $this->moveAndPlot('S', 1, Color::COLOR_LIGHT_BLUE_GREY); // S 1
         $this->moveAndPlot('SE', 2, Color::COLOR_LIGHT_BLUE_GREY); // SE 2
@@ -41,24 +36,8 @@ class Part02 extends Part
     public function moveAndPlot($directions, $steps, $color)
     {
         for ($i = 0; $i < $steps; $i++) {
-            foreach (str_split($directions) as $direction) {
-                switch ($direction) {
-                    case "N":
-                        $this->yPos--;
-                        break;
-                    case "S":
-                        $this->yPos++;
-                        break;
-                    case "E":
-                        $this->xPos++;
-                        break;
-                    case "W":
-                        $this->xPos--;
-                        break;
-                }
-            }
-
-            $this->plot($this->xPos, $this->yPos, $color);
+            $this->position->move($directions);
+            $this->plot($this->position, $color);
         }
     }
 }

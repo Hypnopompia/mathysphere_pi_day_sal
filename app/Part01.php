@@ -5,13 +5,11 @@ use App\Color;
 
 class Part01 extends Part
 {
-    public $x = 3;
-    public $y = 2;
-
     private $rows;
 
     public function __construct()
     {
+        $this->setOffset(new Point(3, 2));
         $this->rows = [
             1 => [3, -3, 37, 27, -7, 59, 38, -9, 36, 30, -1, 81, 29, -7, 53, -11, 49, 35],
             3 => [15, 5, 38, 41, 36, 33, 24, pow(7, 2), 29, 67, -17, 51, 27, 22, -2, 22, -8, 55],
@@ -29,9 +27,9 @@ class Part01 extends Part
                 $navyFormula = (1.9 * $cell) + 1;
 
                 if (-3 <= $cyanFormula && $cyanFormula < 2) {
-                    $this->plot($x, $y, Color::COLOR_CYAN);
+                    $this->plot(new Point($x, $y), Color::COLOR_CYAN);
                 } elseif (20 < $navyFormula && $navyFormula <= 39) {
-                    $this->plot($x, $y, Color::COLOR_NAVY);
+                    $this->plot(new Point($x, $y), Color::COLOR_NAVY);
                 }
             }
         }
