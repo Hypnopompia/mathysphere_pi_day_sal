@@ -3,7 +3,7 @@ namespace App;
 
 class Part
 {
-    protected $offset;
+    protected $offset = null;
     protected $data = [];
 
     public function setOffset(Point $offset)
@@ -33,10 +33,11 @@ class Part
     public function plot(Point $point, $color, $replace = false)
     {
         if ($this->hasColor($point) && !$replace) {
-            // echo "Warning: " . $x . ":" . $y . " is already set.\n";
-            return;
+            return $this;
         }
-        $this->data[$point->x][$point->y] = ['color' => $color];
+
+        $this->data[$point->x][$point->y]['color'] = $color;
+
         return $this;
     }
 

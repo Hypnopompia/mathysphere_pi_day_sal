@@ -14,7 +14,7 @@ class Frame extends Part
         $this->line(new Point(0, 12), new Point(48, 12), Color::COLOR_NAVY); // Middle Top
         $this->line(new Point(0, 24), new Point(48, 24), Color::COLOR_NAVY); // Middle
         $this->line(new Point(0, 36), new Point(48, 36), Color::COLOR_NAVY); // Middle Bottom
-        $this->line(new Point(0, 48), new Point(48, 48), Color::COLOR_NAVY); // Bottome
+        $this->line(new Point(0, 48), new Point(48, 48), Color::COLOR_NAVY); // Bottom
 
         $this->line(new Point(0, 0), new Point(0, 48), Color::COLOR_NAVY); // Left
         $this->line(new Point(12, 13), new Point(12, 48), Color::COLOR_NAVY); // Left Center
