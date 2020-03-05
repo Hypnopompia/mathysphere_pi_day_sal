@@ -8,7 +8,7 @@ class Frame extends Part
     public function __construct()
     {
         $this->setOffset(new Point(1, 1));
-        $this->useColor('navy', '336', 'π');
+        $this->useColor('navy', '336');
     }
 
     public function render()
