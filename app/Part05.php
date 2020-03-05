@@ -18,66 +18,81 @@ class Part05 extends Part
         $this->useColor('cyan', '3846');
         $this->useColor('slateBlue', '930');
 
-        $this->problems['H1'] = [1, 0, -49]; // x²-49
-        $this->problems['I1'] = [1, 2, -48]; // x²+2x-48
-        $this->problems['J1'] = [1, -3, -70]; // x²-3x-70
-        $this->problems['K1'] = [1, -1, -72]; // x²-1-72
+        $this->problems = [
+            'H1' => 'x²-49',
+            'I1' => 'x²+2x-48',
+            'J1' => 'x²-3x-70',
+            'K1' => 'x²-1x-72',
 
-        $this->problems['H2'] = [1, 12, -13]; // x²+12x-13
-        $this->problems['I2'] = [1, 9, -10]; // x²+9x-10
-        $this->problems['J2'] = [1, 5, 4]; // x²+5x+4
-        $this->problems['K2'] = [1, -8, 12]; // x²-8+12
+            'H2' => 'x²+12x-13',
+            'I2' => 'x²+9x-10',
+            'J2' => 'x²+5x+4',
+            'K2' => 'x²-8x+12',
 
-        $this->problems['G3'] = [1, -4, -60]; // x²-4x-60
-        $this->problems['H3'] = [1, -21, 108]; // x²-21x+108
-        $this->problems['I3'] = [1, -7, 10]; // x²-7x+10
-        $this->problems['J3'] = [1, 6, 5]; // x²+6x+5
-        $this->problems['K3'] = [1, 2, -35]; // x²+2-35
+            'G3' => 'x²-4x-60',
+            'H3' => 'x²-21x+108',
+            'I3' => 'x²-7x+10',
+            'J3' => 'x²+6x+5',
+            'K3' => 'x²+2-35',
 
-        $this->problems['F4'] = [1, 4, -45]; // x²+4x-45
-        $this->problems['G4'] = [1, 11, -26]; // x²+11x-26
-        $this->problems['H4'] = [1, 13, 40]; // x²+13x+40
+            'F4' => 'x²+4x-45',
+            'G4' => 'x²+11x-26',
+            'H4' => 'x²+13x+40',
 
-        $this->problems['E5'] = [1, 2, -35]; // x²+2x-35
-        $this->problems['F5'] = [1, 2, 1]; // x²+2x+1
-        $this->problems['G5'] = [1, 9, 8]; // x²+9x+8
+            'E5' => 'x²+2x-35',
+            'F5' => 'x²+2x+1',
+            'G5' => 'x²+9x+8',
 
-        $this->problems['D6'] = [1, -3, -40]; // x²-3x-40
-        $this->problems['E6'] = [1, 5, -14]; // x²+5x-40
-        $this->problems['F6'] = [1, -12, 36]; // x²-12x+36
+            'D6' => 'x²-3x-40',
+            'E6' => 'x²+5x-14',
+            'F6' => 'x²-12x+36',
 
-        $this->problems['A7'] = [1, 18, 81]; // x²+18x+81
-        $this->problems['B7'] = [1, 8, -48]; // x²+8x-48
-        $this->problems['C7'] = [1, -6, 9]; // x²-6x+9
-        $this->problems['D7'] = [1, 6, -91]; // x²+6x-91
-        $this->problems['E7'] = [1, 1, -20]; // x²+x-20
+            'A7' => 'x²+18x+81',
+            'B7' => 'x²+8x-48',
+            'C7' => 'x²-6x+9',
+            'D7' => 'x²+6x-91',
+            'E7' => 'x²+x-20',
 
-        $this->problems['A8'] = [1, 0, -25]; // x²-25
-        $this->problems['B8'] = [1, 11, 24]; // x²+11x+24
-        $this->problems['C8'] = [1, 3, -18]; // x²+3x-18
-        $this->problems['D8'] = [1, 0, -9]; // x²-9
+            'A8' => 'x²-25',
+            'B8' => 'x²+11x+24',
+            'C8' => 'x²+3x-18',
+            'D8' => 'x²-9',
 
-        $this->problems['A9'] = [1, -4, -21]; // x²-4x-21
-        $this->problems['B9'] = [1, -1, -12]; // x²-1x-12
-        $this->problems['C9'] = [1, 7, -30]; // x²+7x-30
-        $this->problems['D9'] = [1, -5, -36]; // x²-5x-36
+            'A9' => 'x²-4x-21',
+            'B9' => 'x²-1x-12',
+            'C9' => 'x²+7x-30',
+            'D9' => 'x²-5x-36',
 
-        $this->problems['A10'] = [1, 8, -33]; // x²+8x-33
-        $this->problems['B10'] = [1, 3, 2]; // x²+3x+2
-        $this->problems['C10'] = [1, 8, 16]; // x²+8x+16
-        $this->problems['D10'] = [1, 1, -30]; // x²+x-30
+            'A10' => 'x²+8x-33',
+            'B10' => 'x²+3x+2',
+            'C10' => 'x²+8x+16',
+            'D10' => 'x²+x-30',
 
-        $this->problems['A11'] = [1, -2, -8]; // x²-2x-8
-        $this->problems['B11'] = [1, 15, 26]; // x²+15x+26
-        $this->problems['C11'] = [1, 10, 16]; // x²+10x+16
-        $this->problems['D11'] = [1, 7, -8]; // x²+7x-8
+            'A11' => 'x²-2x-8',
+            'B11' => 'x²+15x+26',
+            'C11' => 'x²+10x+16',
+            'D11' => 'x²+7x-8',
+        ];
+    }
+
+    private function parseQuadratic($string)
+    {
+        if (preg_match('/(\\d*)x²(?:([+\\-]\\d*)x)?([+\\-]\\d*)?/', $string, $coefficients)) {
+            $a = ($coefficients[1] != "") ? (int) $coefficients[1] : 1;
+            $b = ($coefficients[2] != "") ? (int) $coefficients[2] : 0;
+            $c = ($coefficients[3] != "") ? (int) $coefficients[3] : 0;
+        } else {
+            throw new \Exception('Quadratic parse error: ' . $string);
+        }
+
+        return [$a, $b, $c];
     }
 
     public function render()
     {
 
         foreach ($this->problems as $pointName => $quadratic) {
-            list($a, $b, $c) = $quadratic;
+            list($a, $b, $c) = $this->parseQuadratic($quadratic);
             list($x₁, $x₂) = Algebra::quadratic($a, $b, $c);
 
             foreach ($this->colors as $color => $answers) {
