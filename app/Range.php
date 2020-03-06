@@ -40,6 +40,14 @@ class Range
         return $this->endPoint;
     }
 
+    public function getMiddlePoint()
+    {
+        return new Point(
+            ceil(($this->endPoint->x - $this->startPoint->x) / 2) + $this->startPoint->x,
+            ceil(($this->endPoint->y - $this->startPoint->y) / 2) + $this->startPoint->y
+        );
+    }
+
     public function __get($key)
     {
         switch ($key) {

@@ -13,6 +13,7 @@ class PiDay
         App\Part03::class, // March 3, 2020
         App\Part04::class, // March 4, 2020
         App\Part05::class, // March 5, 2020
+        App\Part06::class, // March 6, 2020
     ];
 
     private $parts = [];
@@ -132,7 +133,9 @@ class PiDay
     {
         foreach ($data as $x => $row) {
             foreach ($row as $y => $cell) {
-                $this->drawSquare($offset->x + $x, $offset->y + $y, $cell['color']);
+                if (isset($cell['color'])) {
+                    $this->drawSquare($offset->x + $x, $offset->y + $y, $cell['color']);
+                }
             }
         }
     }

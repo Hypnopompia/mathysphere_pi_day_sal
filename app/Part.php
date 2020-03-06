@@ -5,6 +5,7 @@ class Part
 {
     protected $offset = null;
     private $colors = [];
+    private $erasing = false;
     private $currentColor;
     protected $data = [];
 
@@ -35,6 +36,21 @@ class Part
         return $this;
     }
 
+    public function erase($erase)
+    {
+        $this->erasing = true;
+        switch (get_class($erase)) {
+            case 'App\Range':
+                $this->fill($erase);
+                break;
+            case 'App\Point':
+                $this->plot($erase);
+                break;
+        }
+        $this->erasing = false;
+        return $this;
+    }
+
     public function getColor()
     {
         return $this->currentColor;
@@ -55,6 +71,11 @@ class Part
 
     public function plot(Point $point, $replace = false)
     {
+        if ($this->erasing) {
+            unset($this->data[$point->x][$point->y]['color']);
+            return $this;
+        }
+
         if ($this->hasColor($point) && !$replace) {
             return $this;
         }
