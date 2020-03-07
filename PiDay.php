@@ -14,6 +14,7 @@ class PiDay
         App\Part04::class, // March 4, 2020
         App\Part05::class, // March 5, 2020
         App\Part06::class, // March 6, 2020
+        App\Part07::class, // March 7, 2020
     ];
 
     private $parts = [];

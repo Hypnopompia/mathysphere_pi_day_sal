@@ -22,7 +22,12 @@ class Part
 
     public function useColor($name, $id)
     {
+        if (isset($this->colors[$name])) {
+            return $this;
+        }
         $this->colors[$name] = new Color($id);
+
+        return $this;
     }
 
     public function getColors()

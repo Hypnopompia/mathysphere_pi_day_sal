@@ -40,6 +40,7 @@ class Part06 extends Part
 
         // 3. Remove the square in the center.
         $this->erase($smallSquares[1][1]);
+        unset($smallSquares[1][1]);
 
         // 4. Repeat steps 2 & 3 for each of the eight remaining squares.
         foreach ($smallSquares as $y => $rows) {
